@@ -151,9 +151,7 @@
       <AdditionalDependencies>glfw3.lib;pugixml.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
-  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
-  <ImportGroup Label="ExtensionTargets">
-  </ImportGroup>
+
   <ItemGroup>
     <ClCompile Include="dev\inc\imgui\imgui.cpp" />
     <ClCompile Include="dev\inc\imgui\imgui_demo.cpp" />
@@ -199,19 +197,21 @@
     <None Include="src\Shader\fragmentShader.glsl" />
     <None Include="src\Shader\vertexShader.glsl" />
   </ItemGroup>
+    <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
   <!--6025 Project3 contents-->
   <PropertyGroup>
-    <DestFolderDir>c:\cnd\Siraphong_Chinsaengchai</DestFolderDir>
+    <DestFolderDir>C:\cnd\Siraphong_Chinsaengchai</DestFolderDir>
     <ZipFileName>Siraphong_Chinsaengchai.zip</ZipFileName>
-    <OutDirAssetPath>c:\cnd\Siraphong_Chinsaengchai\asset</OutDirAssetPath>
-    <OutDirModelPath>c:\cnd\Siraphong_Chinsaengchai\asset\model</OutDirModelPath>
-    <ShaderPath>c:\cnd\Siraphong_Chinsaengchai\src\shader</ShaderPath>
+    <OutDirAssetPath>C:\cnd\Siraphong_Chinsaengchai\asset</OutDirAssetPath>
+    <OutDirModelPath>C:\cnd\Siraphong_Chinsaengchai\asset\model</OutDirModelPath>
+    <ShaderPath>C:\cnd\Siraphong_Chinsaengchai\src\shader</ShaderPath>
   </PropertyGroup>
   <ItemGroup>
     <ModelXMLFile Include="asset\*.*" />
     <ModelPLYFile Include="asset\model\*.*" />
     <ShaderFile Include="src\shader\*.glsl"/>
-    <Project3Item6 Include="$(OutDir)*.exe" />
   </ItemGroup>
   <Target Name="Project_03" DependsOnTargets="Clean;Build" Condition="'$(Configuration)'=='Debug'">
     <Message Text="6025 Project 03 MSBuild" Importance="high" />
@@ -221,7 +221,7 @@
     <Copy SourceFiles="@(ModelXMLFile)" DestinationFolder="$(OutDirAssetPath)" />
     <Copy SourceFiles="@(ModelPLYFile)" DestinationFolder="$(OutDirModelPath)" />
     <Copy SourceFiles="@(ShaderFile)" DestinationFolder="$(ShaderPath)" />
-    <Copy SourceFiles="@(Project3Item6)" DestinationFolder="$(DestFolderDir)" />
+    <Copy SourceFiles="build/6025_Project3.exe" DestinationFolder="$(DestFolderDir)"/>
     <Exec Command="&quot;C:/Program Files/7-Zip/7z.exe&quot; a -tzip $(DestFolderDir)\$(ZipFileName) $(DestFolderDir)" />
   </Target>
   <!--end of contents-->
